@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class FadeToColor : MonoBehaviour
 {
     [SerializeField] private Player _player;
@@ -12,10 +11,5 @@ public class FadeToColor : MonoBehaviour
     {
         if (_fadeToColorMaterial != null)
             Graphics.Blit(source, destination, _fadeToColorMaterial);
-    }
-
-    private void LateUpdate()
-    {
-        _fadeToColorMaterial.SetFloat("_Fade", _player.Energy / _player.MaxEnergy);
     }
 }
