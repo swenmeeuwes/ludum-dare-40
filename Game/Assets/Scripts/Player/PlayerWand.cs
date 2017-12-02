@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // todo: should the player wand be the ISpellCaster?
-public class PlayerWand : MonoBehaviour
+public class PlayerWand : MonoEventDispatcher
 {
+    public static readonly string SpellCast = "SpellCast";
+
     private Player _player;
 
     private ISpell _fireballSpell;
     private ISpell _iceBeamSpell;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _player = GetComponentInParent<Player>();
 
         _fireballSpell = new FireballSpell();
@@ -29,12 +33,24 @@ public class PlayerWand : MonoBehaviour
         if (Input.GetButton(InputAxesLiterals.UseSelectedHotSpell))
         {
             _fireballSpell.Cast(_player);
+            Dispatch(new EventObject
+            {
+                Sender = this,
+                Type = SpellCast,
+                Data = _fireballSpell
+            });
         }
 
         // Cold spell
         if (Input.GetButton(InputAxesLiterals.UseSelectedColdSpell))
         {
             _iceBeamSpell.Cast(_player);
+            Dispatch(new EventObject
+            {
+                Sender = this,
+                Type = SpellCast,
+                Data = _iceBeamSpell
+            });
         }
         if (Input.GetButtonUp(InputAxesLiterals.UseSelectedColdSpell))
             _iceBeamSpell.StopCasting(_player);
