@@ -8,29 +8,18 @@ public class Player : MonoBehaviour, ISpellCaster
     public Transform Transform { get; set; }
 
     private PlayerMovement _movement;
-
-    // Spells
-    private ISpell _fireballSpell;
+    private PlayerWand _wand;
 
     private void Awake()
     {
         Transform = transform;
 
         _movement = GetComponent<PlayerMovement>();
-
-        _fireballSpell = new FireballSpell();
+        _wand = GetComponentInChildren<PlayerWand>();
     }
 
     private void Update()
     {
-        if (Input.GetButton(InputAxesLiterals.UseSelectedHotSpell))
-        {
-            _fireballSpell.Cast(this);
-        }
-
-        if (Input.GetButton(InputAxesLiterals.UseSelectedColdSpell))
-        {
-            
-        }
+        
     }
 }
