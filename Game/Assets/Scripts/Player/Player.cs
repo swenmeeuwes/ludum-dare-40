@@ -7,15 +7,15 @@ public class Player : MonoBehaviour, ISpellCaster
 {
     public Transform Transform { get; set; }
 
-    private PlayerMovement _movement;
-    private PlayerWand _wand;
+    public PlayerWand Wand;
+    private PlayerMovement _movement;    
 
     private void Awake()
     {
         Transform = transform;
 
         _movement = GetComponent<PlayerMovement>();
-        _wand = GetComponentInChildren<PlayerWand>();
+        Wand = GetComponentInChildren<PlayerWand>();
     }
 
     private void Update()
