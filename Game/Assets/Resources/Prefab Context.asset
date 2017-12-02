@@ -14,3 +14,5 @@ MonoBehaviour:
   mapping:
   - key: 0
     prefab: {fileID: 1676608435542850, guid: 4966d3850b7c9484f8775d9a82e42f43, type: 2}
+  - key: 1
+    prefab: {fileID: 1020736841363652, guid: 766af3be338a3d54d978b7b1f0241885, type: 2}
