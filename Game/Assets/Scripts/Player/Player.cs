@@ -8,13 +8,13 @@ public class Player : MonoBehaviour, ISpellCaster
     public Transform Transform { get; set; }
 
     public PlayerWand Wand;
-    private PlayerMovement _movement;    
+    public PlayerMovement Movement;    
 
     private void Awake()
     {
         Transform = transform;
 
-        _movement = GetComponent<PlayerMovement>();
+        Movement = GetComponent<PlayerMovement>();
         Wand = GetComponentInChildren<PlayerWand>();
     }
 
