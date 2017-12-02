@@ -5,7 +5,7 @@ using UnityEngine;
 // todo: should the player wand be the ISpellCaster?
 public class PlayerWand : MonoEventDispatcher
 {
-    public static readonly string SpellCast = "SpellCast";
+    public static readonly string SpellCast = "PlayerWand.SpellCast";
 
     private Player _player;
 
