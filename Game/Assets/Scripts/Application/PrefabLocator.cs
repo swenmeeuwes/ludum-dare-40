@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class PrefabLocator
 {
-    private static readonly string PrefabMappingPath = "Prefab Mapping";
+    private static readonly string PrefabContextPath = "Prefab Context";
 
-    [SerializeField] private PrefabMapping _mapping;
+    [SerializeField] private PrefabContext _context;
 
     #region Singleton        
     private static PrefabLocator _instance;
@@ -25,11 +25,11 @@ public class PrefabLocator
 
     public PrefabLocator()
     {
-        _mapping = Resources.Load<PrefabMapping>(PrefabMappingPath);
+        _context = Resources.Load<PrefabContext>(PrefabContextPath);
     }
 
     public GameObject Locate(Prefab prefabId)
     {
-        return _mapping.mapping.First(item => item.key == prefabId).prefab;
+        return _context.mapping.First(item => item.key == prefabId).prefab;
     }
 }

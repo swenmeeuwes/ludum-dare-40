@@ -15,9 +15,3 @@ public class PrefabMap
     public Prefab key;
     public GameObject prefab;
 }
-
-[CreateAssetMenu(fileName = "Prefab Mapping", menuName = "Context/Prefab Mapping")]
-public class PrefabMapping : ScriptableObject
-{
-    public PrefabMap[] mapping;
-}
