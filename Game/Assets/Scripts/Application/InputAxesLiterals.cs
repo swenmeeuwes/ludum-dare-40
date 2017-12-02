@@ -18,4 +18,8 @@
     public static readonly string MouseX = "Mouse X";
     public static readonly string MouseY = "Mouse Y";
     public static readonly string MouseScrollWheel = "Mouse ScrollWheel";
+    
+    // Custom
+    public static readonly string UseSelectedHotSpell = "UseSelectedHotSpell";
+    public static readonly string UseSelectedColdSpell = "UseSelectedColdSpell";
 }
