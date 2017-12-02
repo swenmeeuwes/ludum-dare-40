@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _fallMultiplier = 2.5f;
     [SerializeField] private float _lowJumpMultiplier = 2f;
+    [SerializeField] private float _slowDownIfCold;
+    [Tooltip("Temperature seen as 'cold' (when the movement speed will be effected).")]
+    [SerializeField] private float _isColdThreshold;
 
     public float Speed;
     public float JumpForce;
@@ -27,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (_slowDownIfCold > Speed)
+        {
+            _slowDownIfCold = Speed;
+            Debug.LogWarning("Slow down if cold must be lower or equal to speed!");
+        }
     }
 
     private void Update()
@@ -34,7 +43,10 @@ public class PlayerMovement : MonoBehaviour
         var input = new Vector2(Input.GetAxis(InputAxesLiterals.Horizontal), Input.GetAxis(InputAxesLiterals.Vertical));
 
         // Moving
-        transform.Translate(Vector2.right * input.x * Speed * Time.deltaTime);
+        var movementSpeed = Speed;
+        if (TemperatureManager.Instance.Temperature < _isColdThreshold)
+            movementSpeed -= _slowDownIfCold * (1 - TemperatureManager.Instance.Temperature / _isColdThreshold);
+        transform.Translate(Vector2.right * input.x * movementSpeed * Time.deltaTime);
 
         IsMoving = Mathf.Abs(input.x) > 0.2;
         if (IsMoving)
