@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
+        _animator.SetBool("IsGrounded", true);
+
         if (_slowDownIfCold > Speed)
         {
             _slowDownIfCold = Speed;
