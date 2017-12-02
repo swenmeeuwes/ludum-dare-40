@@ -5,4 +5,5 @@ using UnityEngine;
 public interface ISpell
 {
     bool Cast(ISpellCaster spellCaster);
+    void StopCasting(ISpellCaster spellCaster);
 }

@@ -21,4 +21,9 @@ public abstract class Spell : ISpell
 
         return false;
     }
+
+    public virtual void StopCasting(ISpellCaster spellCaster)
+    {
+        
+    }
 }

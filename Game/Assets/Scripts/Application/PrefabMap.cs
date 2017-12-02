@@ -6,7 +6,8 @@ using UnityEngine;
 [Serializable]
 public enum Prefab
 {
-    Fireball
+    Fireball,
+    IceBeam
 }
 
 [Serializable]
