@@ -28,7 +28,7 @@ public class FollowingCamera : MonoBehaviour
 	    _followingCamera = GetComponent<Camera>();	    
 	}
 	
-	private void FixedUpdate()
+	private void Update()
 	{
 	    var targetPosition = Target.transform.position;
 	    if (FollowMouse)
