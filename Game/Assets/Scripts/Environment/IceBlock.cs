@@ -22,8 +22,11 @@ public class IceBlock : MonoBehaviour
         _health = _secondsTillStateChange;        
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _startOpacity = _spriteRenderer.color.a;
+        _startOpacity = _spriteRenderer.color.a;       
+    }
 
+    private void Start()
+    {
         ReleaseHoldingObject(false);
     }
 
@@ -73,6 +76,15 @@ public class IceBlock : MonoBehaviour
                     holdingRigidbody.WakeUp();
                 else
                     holdingRigidbody.Sleep();
+            }
+
+            var holdingParticleSystems = Holding.GetComponentsInChildren<ParticleSystem>();
+            foreach (var particleSystem in holdingParticleSystems)
+            {
+                if (release)
+                    particleSystem.Play();
+                else
+                    particleSystem.Stop();
             }
         }
     }
