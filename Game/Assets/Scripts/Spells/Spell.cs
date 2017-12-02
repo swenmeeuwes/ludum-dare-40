@@ -13,7 +13,7 @@ public abstract class Spell : ISpell
     {
         if (Time.time - _secondsSinceLastCast >= Cooldown && TemperatureManager.Instance != null)
         {
-            TemperatureManager.Instance.Temperature += HeatEffect;
+            TemperatureManager.Instance.AddTemperature(HeatEffect);
             _secondsSinceLastCast = Time.time;
 
             return true;
