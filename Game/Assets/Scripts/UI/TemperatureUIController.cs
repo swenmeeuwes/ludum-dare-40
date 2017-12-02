@@ -31,7 +31,7 @@ public class TemperatureUIController : MonoBehaviour
     {
         _temperatureSlider.fillRect.gameObject.GetComponent<Image>().color = Color.Lerp(_coldColor, _hotColor, newValue);
 
-        if (newValue < 0.1f || newValue > 0.9)
+        if (newValue < 0.15f || newValue > 0.85)
         {
             if (_activeShakeCoroutine == null)
                 _activeShakeCoroutine = StartCoroutine(Shake());
