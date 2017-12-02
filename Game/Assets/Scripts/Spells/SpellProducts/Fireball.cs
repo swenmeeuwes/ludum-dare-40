@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,12 +17,14 @@ public class Fireball : MonoBehaviour
         _particleSystem.Play();
     }
 
-    private void Start()
-    {        
-        //StartCoroutine(PlayParticleSystemDelayed()); // Not needed anymore?
-    }        
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (CameraManager.Instance != null)
+            CameraManager.Instance.Shake(0.2f);
+    }
 
     // Quick hack to prevent particles from spawning at Vector3.zero in world pos on first tick
+    [Obsolete]
     private IEnumerator PlayParticleSystemDelayed()
     {
         yield return null;
@@ -29,13 +32,15 @@ public class Fireball : MonoBehaviour
         _particleSystem.Play();
     }
 
+    [Obsolete]
     public void Sleep()
     {
         StopAllCoroutines();
-        _rigidbody.Sleep();        
-        _particleSystem.Stop();        
+        _rigidbody.Sleep();
+        _particleSystem.Stop();
     }
 
+    [Obsolete]
     public void WakeUp()
     {
         _rigidbody.WakeUp();

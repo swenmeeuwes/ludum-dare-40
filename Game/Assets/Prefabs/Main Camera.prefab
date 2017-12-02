@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 81394328139811750}
   - component: {fileID: 114577546932337690}
   - component: {fileID: 114711222186995118}
+  - component: {fileID: 114852346780874760}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -114,6 +115,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fadeToTemperatureColorMaterial: {fileID: 2100000, guid: cd074efaf8fafe246bd6eeb71fd01ae6,
     type: 2}
+--- !u!114 &114852346780874760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669577141642712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014e1026af5e9a34caa5ca8669401c33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &124929324572897266
 Behaviour:
   m_ObjectHideFlags: 1
