@@ -27,17 +27,27 @@ public class PlayerMovement : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-    }    
+    }
 
-    private void FixedUpdate()
-    {    
+    private void Update()
+    {
         var input = new Vector2(Input.GetAxis(InputAxesLiterals.Horizontal), Input.GetAxis(InputAxesLiterals.Vertical));
-        IsMoving = Mathf.Abs(input.x) > 0.2;
 
         // Moving
-        transform.Translate(Vector2.right * input.x * Speed * Time.deltaTime);        
+        transform.Translate(Vector2.right * input.x * Speed * Time.deltaTime);
+
+        IsMoving = Mathf.Abs(input.x) > 0.2;
         if (IsMoving)
             _spriteRenderer.flipX = !(input.x > 0.2);
+
+        // Update the animator
+        _animator.SetFloat("InputX", Mathf.Abs(input.x));
+        _animator.SetBool("IsGrounded", _groundCheck.IsColliding);
+    }
+
+    private void FixedUpdate()
+    {
+        var input = new Vector2(Input.GetAxis(InputAxesLiterals.Horizontal), Input.GetAxis(InputAxesLiterals.Vertical));                              
 
         // Jumping
         if (_groundCheck.IsColliding && Input.GetButton(InputAxesLiterals.Jump))
@@ -47,10 +57,6 @@ public class PlayerMovement : MonoBehaviour
         if (_rigidbody.velocity.y < 0)
             _rigidbody.velocity += Vector2.up * Physics2D.gravity.y * (_fallMultiplier - 1) * Time.deltaTime;
         else if (_rigidbody.velocity.y > 0 && !Input.GetButton(InputAxesLiterals.Jump))
-            _rigidbody.velocity += Vector2.up * Physics2D.gravity.y * (_lowJumpMultiplier - 1) * Time.deltaTime;
-
-        // Update the animator
-        _animator.SetFloat("InputX", Mathf.Abs(input.x));
-        _animator.SetBool("IsGrounded", _groundCheck.IsColliding);
+            _rigidbody.velocity += Vector2.up * Physics2D.gravity.y * (_lowJumpMultiplier - 1) * Time.deltaTime;        
     }    
 }
