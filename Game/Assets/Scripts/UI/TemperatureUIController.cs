@@ -9,14 +9,16 @@ public class TemperatureUIController : MonoBehaviour
     [SerializeField] private Color _coldColor;
     [SerializeField] private Color _hotColor;
 
+    private Coroutine _activeShakeCoroutine;
+
     private void Start()
     {
-        _temperatureSlider.onValueChanged.AddListener(UpdateTemperatureSliderColor);
+        _temperatureSlider.onValueChanged.AddListener(OnTemperatureSliderValueChanged);
     }
 
     private void OnDestroy()
     {
-        _temperatureSlider.onValueChanged.RemoveListener(UpdateTemperatureSliderColor);
+        _temperatureSlider.onValueChanged.RemoveListener(OnTemperatureSliderValueChanged);
     }
 
     private void Update()
@@ -25,8 +27,30 @@ public class TemperatureUIController : MonoBehaviour
             _temperatureSlider.value = TemperatureManager.Instance.Temperature;
     }
 
-    private void UpdateTemperatureSliderColor(float newValue)
+    private void OnTemperatureSliderValueChanged(float newValue)
     {
         _temperatureSlider.fillRect.gameObject.GetComponent<Image>().color = Color.Lerp(_coldColor, _hotColor, newValue);
+
+        if (newValue < 0.1f || newValue > 0.9)
+        {
+            if (_activeShakeCoroutine == null)
+                _activeShakeCoroutine = StartCoroutine(Shake());
+        }
+        else if (_activeShakeCoroutine != null)
+        {
+            StopCoroutine(_activeShakeCoroutine);
+            _activeShakeCoroutine = null;
+            _temperatureSlider.GetComponent<RectTransform>().rotation = Quaternion.identity;            
+        }
+    }   
+
+    private IEnumerator Shake()
+    {
+        var rectTransform = _temperatureSlider.GetComponent<RectTransform>();
+        while (true)
+        {
+            rectTransform.rotation = Quaternion.Euler(rectTransform.rotation.x, rectTransform.rotation.y, Random.value * 6);
+            yield return null;
+        }
     }
 }
