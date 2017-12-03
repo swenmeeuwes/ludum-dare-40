@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoSingleton<SceneLoader>
 {
     public AsyncOperation CurrentAsyncOperation;
-
-    // todo change to work with method name
+    
     public void LoadNextAsync()
     {
-        // TEST METHOD
+        var activeScene = SceneManager.GetActiveScene();
+
         SceneManager.LoadScene(SceneLiterals.LoadScreen, LoadSceneMode.Additive);
 
-        CurrentAsyncOperation = SceneManager.LoadSceneAsync("Level 1");
+        CurrentAsyncOperation = SceneManager.LoadSceneAsync(activeScene.buildIndex + 1);
         CurrentAsyncOperation.allowSceneActivation = false;
 
         CurrentAsyncOperation.completed += completedAsyncOperation => completedAsyncOperation.allowSceneActivation = true;
