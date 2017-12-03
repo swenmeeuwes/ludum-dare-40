@@ -17,11 +17,6 @@ public class Fireball : MonoBehaviour
         _particleSystem.Play();
     }
 
-    private void Start()
-    {
-        _rigidbody.AddTorque(15f);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (CameraManager.Instance != null)
