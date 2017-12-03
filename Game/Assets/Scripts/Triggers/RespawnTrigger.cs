@@ -10,6 +10,10 @@ public class RespawnTrigger : TagTrigger
     {
         base.Trigger(other);
 
+        var player = other.GetComponent<Player>();
+        if (player != null)
+            player.Hit();
+
         other.transform.position = _respawnPoint;
     }
 
