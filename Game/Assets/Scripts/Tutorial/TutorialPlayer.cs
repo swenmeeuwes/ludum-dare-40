@@ -9,6 +9,7 @@ public class TutorialPlayer : MonoBehaviour
     [SerializeField] private Text _continueTextField;
     [SerializeField] private float _tutorialDelay;
     [SerializeField] private TemperatureUIController _temperatureUiController;
+    [SerializeField] private Image _exitArrow;
 
     [Tooltip("Time in seconds before the tutorial starts")] public TutorialItem[] Sequence;
 
@@ -34,7 +35,8 @@ public class TutorialPlayer : MonoBehaviour
     private void Awake()
     {
         _sequenceIndex = -1;
-        _continueTextField.enabled = false;        
+        _continueTextField.enabled = false;
+        _exitArrow.enabled = false;
     }
 
     private void Start()
@@ -87,6 +89,8 @@ public class TutorialPlayer : MonoBehaviour
 
         _continueTextField.enabled = false;
         _tutorialTextField.GetComponent<Text>().enabled = false;
+
+        _player.Wand.AddEventListener(PlayerWand.SpellCast, _ => _exitArrow.enabled = true, true);
 
         yield return new WaitForSeconds(0.5f);
 
