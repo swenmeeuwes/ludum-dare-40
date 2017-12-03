@@ -53,7 +53,9 @@ public class IceBlock : MonoBehaviour
                 gameObject.SetActive(false);
         }
 
-        if (TemperatureManager.Instance != null)
+        var screenPosition = Camera.main.WorldToViewportPoint(transform.position);
+        if (TemperatureManager.Instance != null && screenPosition.x > 0 && screenPosition.x < 1 &&
+            screenPosition.y > 0 && screenPosition.y < 1)
         {
             if (TemperatureManager.Instance.Temperature < _freezeThreshold)
                 AddHealth(Time.deltaTime);
