@@ -10,7 +10,7 @@ public class IceBeamSpell : Spell
     public IceBeamSpell()
     {
         HeatEffect = -0.1f;
-        Cooldown = 1f;
+        Cooldown = 0.2f;
     }
 
     public override bool Cast(ISpellCaster spellCaster)
