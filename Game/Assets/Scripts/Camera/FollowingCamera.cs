@@ -33,7 +33,7 @@ public class FollowingCamera : MonoBehaviour
 	{
 	    var targetPosition = Target.transform.position + Offset;
 	    if (FollowMouse)
-	        targetPosition += Camera.main.ScreenToWorldPoint(Input.mousePosition) * 0.18f;
+	        targetPosition += (Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.transform.position) * 0.18f;
 
 	    var dampedPosition = Vector2.SmoothDamp(_followingCamera.transform.position, targetPosition,
 	        ref _currentVelocity, SmoothTime, MaxSpeed, Time.deltaTime);
