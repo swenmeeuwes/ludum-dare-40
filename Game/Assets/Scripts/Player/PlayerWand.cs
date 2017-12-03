@@ -30,7 +30,7 @@ public class PlayerWand : MonoEventDispatcher
         transform.localRotation = Quaternion.Euler(Vector3.forward * rotationAngle);
 
         // Hot spell
-        if (Input.GetButton(InputAxesLiterals.UseSelectedHotSpell))
+        if (UnlockManager.Instance != null && UnlockManager.Instance.UnlockedFireBall && Input.GetButton(InputAxesLiterals.UseSelectedHotSpell))
         {
             _fireballSpell.Cast(_player);
             Dispatch(new EventObject
@@ -42,7 +42,7 @@ public class PlayerWand : MonoEventDispatcher
         }
 
         // Cold spell
-        if (Input.GetButton(InputAxesLiterals.UseSelectedColdSpell))
+        if (UnlockManager.Instance != null && UnlockManager.Instance.UnlockedIceBeam && Input.GetButton(InputAxesLiterals.UseSelectedColdSpell))
         {
             _iceBeamSpell.Cast(_player);
             Dispatch(new EventObject
