@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ClampPositionToIntegers : MonoBehaviour {
-	private void Update () {	    
+	private void FixedUpdate () {	    
         gameObject.transform.position = new Vector3(
             Mathf.RoundToInt(gameObject.transform.position.x),
 	        Mathf.RoundToInt(gameObject.transform.position.y),
