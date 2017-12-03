@@ -12,6 +12,7 @@ public class Fireball : MonoBehaviour
     private Rigidbody2D _rigidbody;
 
     private float _startAwakeTime;
+    private bool _didCameraShake = false;
 
     private void Awake()
     {
@@ -31,9 +32,20 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var screenPosition = Camera.main.WorldToViewportPoint(transform.position);        
-        if (CameraManager.Instance != null && screenPosition.x > 0 && screenPosition.x < 1 && screenPosition.y > 0 && screenPosition.y < 1)
+        var screenPosition = Camera.main.WorldToViewportPoint(transform.position);
+        if (!_didCameraShake && CameraManager.Instance != null && screenPosition.x > 0 && screenPosition.x < 1 &&
+            screenPosition.y > 0 && screenPosition.y < 1)
+        {            
             CameraManager.Instance.Shake(0.2f);
+            _didCameraShake = true;
+        }
+
+        var player = other.GetComponent<Player>();
+        if (player != null)
+        {
+            player.Hit();
+            gameObject.layer = (int) Layers.Deactivated;
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
