@@ -3,16 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Animator))]
 public class TemperatureUIController : MonoBehaviour
 {    
     [SerializeField] private Slider _temperatureSlider;
     [SerializeField] private Color _coldColor;
     [SerializeField] private Color _hotColor;
 
+    private Animator _animator;
+
     private Coroutine _activeShakeCoroutine;
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
+
         _temperatureSlider.onValueChanged.AddListener(OnTemperatureSliderValueChanged);
     }
 
@@ -25,6 +30,11 @@ public class TemperatureUIController : MonoBehaviour
     {
         if (TemperatureManager.Instance != null)
             _temperatureSlider.value = TemperatureManager.Instance.Temperature;
+    }
+
+    public void Hide(bool hide)
+    {
+        _animator.SetBool("Hidden", hide);
     }
 
     private void OnTemperatureSliderValueChanged(float newValue)

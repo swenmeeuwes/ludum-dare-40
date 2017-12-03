@@ -531,6 +531,96 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c28754c8b877fc49b8472c75391cc84, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1038526683
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.4875206
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.9738019
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.035142854
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125313273611566, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224604292790714170, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 352
+      objectReference: {fileID: 0}
+    - target: {fileID: 224604292790714170, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -157.45079
+      objectReference: {fileID: 0}
+    - target: {fileID: 224060327001063620, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 533.98755
+      objectReference: {fileID: 0}
+    - target: {fileID: 224060327001063620, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 300.97382
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1038526684 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1696820981403810, guid: 2f10e85904ae25b43bc2a444de2fd895,
+    type: 2}
+  m_PrefabInternal: {fileID: 1038526683}
+--- !u!95 &1038526685
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1038526684}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5f6402da5ecb1243bdf4fc782f0de00, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &1038526687 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114406489109821470, guid: 2f10e85904ae25b43bc2a444de2fd895,
+    type: 2}
+  m_PrefabInternal: {fileID: 1038526683}
+  m_Script: {fileID: 11500000, guid: 4e3783a448551a94cad6876c983ac904, type: 3}
 --- !u!1 &1660274936
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,11 +2316,28 @@ MonoBehaviour:
   _tutorialTextField: {fileID: 535953817}
   _continueTextField: {fileID: 146511728}
   _tutorialDelay: 0.5
+  _temperatureUiController: {fileID: 1038526687}
   Sequence:
-  - Text: This is tutorial item 1
-  - Text: This is tutorial item 2
-  - Text: This is tutorial item 3
-  - Text: This is tutorial item 4
+  - Text: Hmm, the more you age, the worse it gets.
+    Action: 0
+  - Text: OH, *AHEM*
+    Action: 0
+  - Text: Hello class!
+    Action: 0
+  - Text: Welcome to today's class about temperature and spells!
+    Action: 0
+  - Text: The first important concept that should be known is temperature.
+    Action: 0
+  - Text: Warm and cold cancel eachother out, thus reaching equilibrium.
+    Action: 0
+  - Text: When this equilibrium is disturbed bad things will happen.
+    Action: 0
+  - Text: The more warmth or cold there is, the worse it gets.
+    Action: 0
+  - Text: Temperature can be checked at the bottom right of the screen.
+    Action: 1
+  - Text: You mustn't disturb the balance!
+    Action: 0
 --- !u!4 &1742998500
 Transform:
   m_ObjectHideFlags: 0

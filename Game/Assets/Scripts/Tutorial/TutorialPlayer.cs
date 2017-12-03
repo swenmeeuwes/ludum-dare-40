@@ -8,6 +8,7 @@ public class TutorialPlayer : MonoBehaviour
     [SerializeField] private TypeWriter _tutorialTextField;
     [SerializeField] private Text _continueTextField;
     [SerializeField] private float _tutorialDelay;
+    [SerializeField] private TemperatureUIController _temperatureUiController;
 
     [Tooltip("Time in seconds before the tutorial starts")] public TutorialItem[] Sequence;
 
@@ -41,6 +42,8 @@ public class TutorialPlayer : MonoBehaviour
         _player = FindObjectOfType<Player>();
         _player.Movement.enabled = false;
         _player.Wand.enabled = false;
+
+        _temperatureUiController.Hide(true);
 
         _tutorialTextField.AddEventListener(TypeWriter.Finished, OnTypeWriterFinished);
 
@@ -94,6 +97,17 @@ public class TutorialPlayer : MonoBehaviour
     private void HandleTutorialItem(TutorialItem tutorialItem)
     {
         _tutorialTextField.Type(tutorialItem.Text);
+
+        switch (tutorialItem.Action)
+        {
+            case TutorialItemActionType.ShowTemperatureMeter:
+                _temperatureUiController.Hide(false);
+                break;
+
+            case TutorialItemActionType.None:
+            default:
+                break;
+        }
     }
 
     private void OnTypeWriterFinished(EventObject eventObject)
