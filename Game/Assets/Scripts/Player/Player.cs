@@ -56,6 +56,10 @@ public class Player : MonoBehaviour, ISpellCaster
                     if (UnlockManager.Instance != null)
                         UnlockManager.Instance.UnlockedIceBeam = true;
                     break;
+                case CollectableType.FireBallTome:
+                    if (UnlockManager.Instance != null)
+                        UnlockManager.Instance.UnlockedFireBall = true;
+                    break;
             }
 
             collectable.Collect();

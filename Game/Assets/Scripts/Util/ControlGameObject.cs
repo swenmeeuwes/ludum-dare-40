@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControlGameObject : MonoBehaviour
 {
     [SerializeField] private GameObject[] _controlledGameObjects;
-    [SerializeField] private bool _disableByDefault = true;
+    [SerializeField] private bool _disableByDefault = true;    
 
     private void Awake()
     {

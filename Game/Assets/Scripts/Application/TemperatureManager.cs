@@ -32,6 +32,11 @@ public class TemperatureManager : MonoSingleton<TemperatureManager>
             OnBoilingPoint();
     }
 
+    public void SetTemperature(float newTemperature)
+    {
+        SetTemperature(newTemperature, false);
+    }
+
     public void SetTemperature(float newTemperature, bool instant = false)
     {
         if (instant)

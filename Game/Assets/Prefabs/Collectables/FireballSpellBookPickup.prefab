@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4906441973457258}
-  - component: {fileID: 95344112405932598}
   - component: {fileID: 58373780952307738}
+  - component: {fileID: 95806616248404534}
   - component: {fileID: 114230543360744458}
   m_Layer: 0
-  m_Name: ColdSpellBookPickup
+  m_Name: FireballSpellBookPickup
   m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4344851346075578}
   - component: {fileID: 212485845149940818}
   m_Layer: 0
-  m_Name: BlueSpellBook
+  m_Name: RedSpellBook
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
---- !u!95 &95344112405932598
+--- !u!95 &95806616248404534
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
@@ -126,7 +126,7 @@ Animator:
   m_GameObject: {fileID: 1057852282354240}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 182544a19788ac34abe22dc810e9bdd8, type: 2}
+  m_Controller: {fileID: 9100000, guid: a0d104592f3d92946aa8f259b670e522, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -146,6 +146,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
+  _onCollect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!212 &212199886626700240
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -181,7 +197,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1f20328abbd773b4bbf0df6eae99b0dc, type: 3}
-  m_Color: {r: 0.7941176, g: 0.79553753, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7941176, b: 0.7941176, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -224,7 +240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: ad87e93b2446e2145ad0129bd51bb2fb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d95bac615fedb404886e0aef7464b8b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
