@@ -4,17 +4,34 @@ using UnityEngine;
 public abstract class MonoSingleton<T> : MonoBehaviour
 {
     public static T Instance;
+    public static bool DestroyOnLoad = true;
 
     protected void OnDestroy()
-    {
-        Instance = default(T);
+    {        
+        if (DestroyOnLoad)
+            Instance = default(T);
     }
 
-    protected void DefineSingleton(T parent)
+    protected void DefineSingleton(T parent, bool dontDestroyOnLoad = false)
     {
         if (Instance != null)
-            throw new Exception(string.Format("{0} has already been instantiated. Please make sure you only have one in the scene!", parent.ToString()));
+        {
+            if (dontDestroyOnLoad)
+            {                
+                Destroy(gameObject);
+                return;
+            }
+            else
+                throw new Exception(string.Format("{0} has already been instantiated. Please make sure you only have one in the scene!", parent.ToString()));
+        }
+            
 
         Instance = parent;
+
+        if (dontDestroyOnLoad)
+        {
+            DestroyOnLoad = false;
+            DontDestroyOnLoad(gameObject);
+        }
     }    
 }

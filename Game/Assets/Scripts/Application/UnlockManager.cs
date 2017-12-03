@@ -10,13 +10,6 @@ public class UnlockManager : MonoSingleton<UnlockManager>
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        DefineSingleton(this);
-        DontDestroyOnLoad(gameObject);
+        DefineSingleton(this, true);
     }
 }
