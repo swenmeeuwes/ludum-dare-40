@@ -31,7 +31,8 @@ public class Fireball : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (CameraManager.Instance != null)
+        var screenPosition = Camera.main.WorldToViewportPoint(transform.position);        
+        if (CameraManager.Instance != null && screenPosition.x > 0 && screenPosition.x < 1 && screenPosition.y > 0 && screenPosition.y < 1)
             CameraManager.Instance.Shake(0.2f);
     }
 
