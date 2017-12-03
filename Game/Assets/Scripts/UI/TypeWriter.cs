@@ -50,7 +50,7 @@ public class TypeWriter : MonoEventDispatcher
         {
             _textField.text += targetText[i];
             yield return new WaitForSeconds(0.01f);
-        }
+        }        
 
         Dispatch(new EventObject
         {
@@ -58,5 +58,7 @@ public class TypeWriter : MonoEventDispatcher
             Type = Finished,
             Data = targetText
         });
+
+        IsWriting = false;
     }
 }
