@@ -5,7 +5,7 @@ using UnityEngine;
 public class FireballSpell : Spell {
     public FireballSpell()
     {
-        HeatEffect = 0.2f;
+        HeatEffect = 0.05f;
         Cooldown = 0.5f;
     }
 
