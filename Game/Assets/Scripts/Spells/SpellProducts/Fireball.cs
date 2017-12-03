@@ -43,6 +43,16 @@ public class Fireball : MonoBehaviour
             iceBlock.AddHealth(-8f * Time.deltaTime);
     }
 
+    public void SetVelocity(Vector2 velocity)
+    {
+        _rigidbody.velocity = velocity;
+    }
+
+    public void SetAngularDrag(float angularDrag)
+    {
+        _rigidbody.angularDrag = angularDrag;
+    }
+
     // Quick hack to prevent particles from spawning at Vector3.zero in world pos on first tick
     [Obsolete]
     private IEnumerator PlayParticleSystemDelayed()

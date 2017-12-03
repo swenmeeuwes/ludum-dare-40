@@ -25,6 +25,26 @@ public class TemperatureManager : MonoSingleton<TemperatureManager>
             OnBoilingPoint();
     }
 
+    public void SetTemperature(float newTemperature, bool instant = false)
+    {
+        if (instant)
+        {
+            _temperature = newTemperature;
+            return;
+        }
+
+        // todo: replace by coroutine?
+        iTween.ValueTo(gameObject, iTween.Hash(
+                "from", _temperature,
+                "to", newTemperature,
+                "time", 0.6f,
+                "onupdatetarget", gameObject,
+                "onupdate", "TemperatureTweenOnUpdateCallBack",
+                "easetype", iTween.EaseType.easeInOutCirc
+            )
+        );
+    }
+
     public void AddTemperature(float addition, bool instant = false)
     {
         var targetTemperature = Mathf.Clamp01(_temperature + addition);
