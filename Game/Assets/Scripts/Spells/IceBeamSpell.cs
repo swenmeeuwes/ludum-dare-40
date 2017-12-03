@@ -19,6 +19,8 @@ public class IceBeamSpell : Spell
         if (Time.time - _secondsSinceLastCast < Cooldown || TemperatureManager.Instance == null)
             return false;
 
+        IsCasting = true;
+
         var mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);        
 
         if (_activeIceBeam == null)
@@ -59,5 +61,7 @@ public class IceBeamSpell : Spell
         _secondsSinceLastCast = Time.time;
         _activeIceBeam.CleanUp();
         _activeIceBeam = null;
+
+        IsCasting = false;
     }    
 }

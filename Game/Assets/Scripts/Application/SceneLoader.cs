@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoSingleton<SceneLoader>
 {
     public AsyncOperation CurrentAsyncOperation;
+
+    private void Awake()
+    {
+        DefineSingleton(this);
+    }
     
     public void LoadNextAsync()
     {
@@ -14,6 +19,18 @@ public class SceneLoader : MonoSingleton<SceneLoader>
         SceneManager.LoadScene(SceneLiterals.LoadScreen, LoadSceneMode.Additive);
 
         CurrentAsyncOperation = SceneManager.LoadSceneAsync(activeScene.buildIndex + 1);
+        CurrentAsyncOperation.allowSceneActivation = false;
+
+        CurrentAsyncOperation.completed += completedAsyncOperation => completedAsyncOperation.allowSceneActivation = true;
+    }
+
+    public void ReloadCurrentSceneAsync()
+    {
+        var activeScene = SceneManager.GetActiveScene();
+
+        SceneManager.LoadScene(SceneLiterals.LoadScreen, LoadSceneMode.Additive);
+
+        CurrentAsyncOperation = SceneManager.LoadSceneAsync(activeScene.buildIndex);
         CurrentAsyncOperation.allowSceneActivation = false;
 
         CurrentAsyncOperation.completed += completedAsyncOperation => completedAsyncOperation.allowSceneActivation = true;

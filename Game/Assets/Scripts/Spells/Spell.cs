@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class Spell : ISpell
 {
+    public bool IsCasting { get; set; }
+
     protected float HeatEffect; // Range[-1, 1], effect on heat per cast
     protected float Cooldown; // Cooldown in seconds
 

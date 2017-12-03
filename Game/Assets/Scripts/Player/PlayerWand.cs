@@ -52,7 +52,13 @@ public class PlayerWand : MonoEventDispatcher
                 Data = _iceBeamSpell
             });
         }
-        if (Input.GetButtonUp(InputAxesLiterals.UseSelectedColdSpell))
+        if (Input.GetButtonUp(InputAxesLiterals.UseSelectedColdSpell) && _iceBeamSpell.IsCasting)
+            _iceBeamSpell.StopCasting(_player);
+    }
+
+    public void StopCastingAll()
+    {
+        if (_iceBeamSpell.IsCasting)
             _iceBeamSpell.StopCasting(_player);
     }
 }
