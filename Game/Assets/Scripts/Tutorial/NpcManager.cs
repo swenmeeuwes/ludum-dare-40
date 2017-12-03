@@ -18,7 +18,7 @@ public class NpcManager : MonoSingleton<NpcManager>
     private void Start()
     {
         _player = FindObjectOfType<Player>();
-        _player.Wand.AddEventListener(PlayerWand.SpellCast, OnPlayerSpellCast, true);
+        //_player.Wand.AddEventListener(PlayerWand.SpellCast, OnPlayerSpellCast, true);
     }
 
     public void Register(StressingNpc npc)

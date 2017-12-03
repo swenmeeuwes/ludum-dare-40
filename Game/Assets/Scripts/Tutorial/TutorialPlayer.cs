@@ -10,6 +10,7 @@ public class TutorialPlayer : MonoBehaviour
     [SerializeField] private float _tutorialDelay;
     [SerializeField] private TemperatureUIController _temperatureUiController;
     [SerializeField] private Image _exitArrow;
+    [SerializeField] private Spawner _fireballSpawner;
 
     [Tooltip("Time in seconds before the tutorial starts")] public TutorialItem[] Sequence;
 
@@ -100,12 +101,26 @@ public class TutorialPlayer : MonoBehaviour
 
     private void HandleTutorialItem(TutorialItem tutorialItem)
     {
-        _tutorialTextField.Type(tutorialItem.Text);
+        _tutorialTextField.Type(PlayerPrefStringResolver.Instance.Resolve(tutorialItem.Text));
 
         switch (tutorialItem.Action)
         {
             case TutorialItemActionType.ShowTemperatureMeter:
                 _temperatureUiController.Hide(false);
+                break;
+
+            case TutorialItemActionType.CameraShake:
+                CameraManager.Instance.Shake(0.2f);
+                break;
+
+            case TutorialItemActionType.SpawnFireball:
+                _fireballSpawner.Spawn();
+                _fireballSpawner.Invoke("Spawn", 0.3f);
+                _fireballSpawner.Invoke("Spawn", 0.6f);
+                break;
+
+            case TutorialItemActionType.Mayhem:
+                NpcManager.Instance.UnleashTheChaos();
                 break;
 
             case TutorialItemActionType.None:

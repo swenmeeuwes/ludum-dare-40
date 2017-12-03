@@ -6,7 +6,10 @@ using UnityEngine;
 public enum TutorialItemActionType
 {
     None,
-    ShowTemperatureMeter
+    ShowTemperatureMeter,
+    CameraShake,
+    SpawnFireball,
+    Mayhem
 }
 
 [Serializable]
