@@ -44,4 +44,21 @@ public class Player : MonoBehaviour, ISpellCaster
     {
         _spriteRenderer.material = _material;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        var collectable = other.GetComponent<Collectable>();
+        if (collectable != null)
+        {
+            switch (collectable.Type)
+            {
+                case CollectableType.IceBeamTome:
+                    if (UnlockManager.Instance != null)
+                        UnlockManager.Instance.UnlockedIceBeam = true;
+                    break;
+            }
+
+            collectable.Collect();
+        }        
+    }
 }
