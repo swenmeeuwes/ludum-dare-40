@@ -161,6 +161,11 @@ Prefab:
       propertyPath: Target
       value: 
       objectReference: {fileID: 1995126443}
+    - target: {fileID: 20297281352341646, guid: 7c28754c8b877fc49b8472c75391cc84,
+        type: 2}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7c28754c8b877fc49b8472c75391cc84, type: 2}
   m_IsPrefabParent: 0
@@ -362,7 +367,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6075b75f5225bfe439063dd581a1a10f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1661,12 +1666,12 @@ Prefab:
     - target: {fileID: 224060327001063620, guid: 2f10e85904ae25b43bc2a444de2fd895,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 475.5
+      value: 477
       objectReference: {fileID: 0}
     - target: {fileID: 224060327001063620, guid: 2f10e85904ae25b43bc2a444de2fd895,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 267.5
+      value: 268.5
       objectReference: {fileID: 0}
     - target: {fileID: 224604292790714170, guid: 2f10e85904ae25b43bc2a444de2fd895,
         type: 2}
@@ -1676,7 +1681,37 @@ Prefab:
     - target: {fileID: 224604292790714170, guid: 2f10e85904ae25b43bc2a444de2fd895,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: -467.36316
+      value: -335.50003
+      objectReference: {fileID: 0}
+    - target: {fileID: 114458895594804334, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711487353891338, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114711487353891338, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224593595659818706, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.14999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 224593595659818706, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 224593595659818706, guid: 2f10e85904ae25b43bc2a444de2fd895,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2f10e85904ae25b43bc2a444de2fd895, type: 2}
@@ -2739,7 +2774,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6075b75f5225bfe439063dd581a1a10f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3424,7 +3459,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6075b75f5225bfe439063dd581a1a10f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4737,7 +4772,7 @@ TilemapRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6075b75f5225bfe439063dd581a1a10f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
