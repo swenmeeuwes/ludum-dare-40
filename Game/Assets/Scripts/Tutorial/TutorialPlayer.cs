@@ -90,8 +90,8 @@ public class TutorialPlayer : MonoBehaviour
 
         _continueTextField.enabled = false;
         _tutorialTextField.GetComponent<Text>().enabled = false;
-
-        _player.Wand.AddEventListener(PlayerWand.SpellCast, _ => _exitArrow.enabled = true, true);
+        
+        _exitArrow.enabled = true;
 
         yield return new WaitForSeconds(0.5f);
 
