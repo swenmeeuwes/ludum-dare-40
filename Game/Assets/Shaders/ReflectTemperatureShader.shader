@@ -51,12 +51,12 @@
 			{
 				float4 col = tex2D(_MainTex, i.uv);
 
-				if (_Temperature < 0.3) {
-					col = lerp(col, _ColdColor, ((0.3 - _Temperature) / 0.3) * _Opacity);
+				if (_Temperature < 0.4) {
+					col = lerp(col, _ColdColor, ((0.4 - _Temperature) / 0.4) * _Opacity);
 				}
 
-				if (_Temperature > 0.7) {
-					col = lerp(col, _HotColor, ((_Temperature - 0.7) / 0.3) * _Opacity);
+				if (_Temperature > 0.6) {
+					col = lerp(col, _HotColor, ((_Temperature - 0.6) / 0.4) * _Opacity);
 				}
 				
 				return col;
