@@ -9,7 +9,8 @@ public class FollowingCamera : MonoBehaviour
     public GameObject Target;
     public float SmoothTime;
     public float MaxSpeed;
-    public bool FollowMouse;
+    public Vector3 Offset;
+    public bool FollowMouse;    
 
     private Camera _followingCamera;
     private Vector3 _startPos;
@@ -30,7 +31,7 @@ public class FollowingCamera : MonoBehaviour
 	
 	private void Update()
 	{
-	    var targetPosition = Target.transform.position;
+	    var targetPosition = Target.transform.position + Offset;
 	    if (FollowMouse)
 	        targetPosition += Camera.main.ScreenToWorldPoint(Input.mousePosition) * 0.18f;
 
