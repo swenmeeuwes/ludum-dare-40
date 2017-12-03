@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// todo: refactor to work with the 'EffectedByTemperature' class
 [RequireComponent(typeof(SpriteRenderer))]
 public class IceBlock : MonoBehaviour
 {
