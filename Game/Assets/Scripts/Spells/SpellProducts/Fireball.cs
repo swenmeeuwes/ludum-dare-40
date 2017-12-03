@@ -6,15 +6,27 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Fireball : MonoBehaviour
 {
+    [Tooltip("Time in seconds before the object despawns, put to -1 for never.")] public float Lifetime = 30f;
+
     private ParticleSystem _particleSystem;
     private Rigidbody2D _rigidbody;
+
+    private float _startAwakeTime;
 
     private void Awake()
     {
         _particleSystem = GetComponentInChildren<ParticleSystem>();
         _rigidbody = GetComponent<Rigidbody2D>();
 
+        _startAwakeTime = Time.time;
+
         _particleSystem.Play();
+    }
+
+    private void Update()
+    {
+        if (Lifetime > 0 && Time.time - _startAwakeTime > Lifetime)
+            Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
