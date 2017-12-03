@@ -23,6 +23,13 @@ public class Fireball : MonoBehaviour
             CameraManager.Instance.Shake(0.2f);
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        var iceBlock = other.GetComponent<IceBlock>();
+        if (iceBlock != null)
+            iceBlock.AddHealth(-8f * Time.deltaTime);
+    }
+
     // Quick hack to prevent particles from spawning at Vector3.zero in world pos on first tick
     [Obsolete]
     private IEnumerator PlayParticleSystemDelayed()

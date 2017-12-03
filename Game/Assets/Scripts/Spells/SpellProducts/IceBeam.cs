@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class IceBeam : MonoBehaviour
 {
+    [SerializeField] private float _freezePower = 4f; // If equal or lower than 1 it will only have effect when the environment is cold aswell
+
     private ParticleSystem _particleSystem;
 
     private void Awake()
@@ -22,5 +24,12 @@ public class IceBeam : MonoBehaviour
         yield return new WaitUntil(() => !_particleSystem.IsAlive());
 
         Destroy(gameObject);
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {        
+        var iceBlockHolder = other.GetComponent<IceBlockHolder>();
+        if (iceBlockHolder)
+            iceBlockHolder.Freeze(_freezePower * Time.deltaTime);
     }
 }

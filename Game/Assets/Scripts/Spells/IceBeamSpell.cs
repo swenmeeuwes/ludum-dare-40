@@ -27,7 +27,7 @@ public class IceBeamSpell : Spell
             var iceBeamObject = MonoBehaviour.Instantiate(iceBeamPrefab, spellCaster.Transform.position, Quaternion.identity);
 
             if (spellCaster.Transform.name == "Player")
-                iceBeamObject.layer = (int)Layers.PlayerSpells;
+                iceBeamObject.layer = (int)Layers.ColdPlayerSpells;
 
             var mouseIceBeamDelta = (mouseWorldPosition - iceBeamObject.transform.position).normalized;
             var rotationAngle = Mathf.Atan(mouseIceBeamDelta.y / mouseIceBeamDelta.x) * Mathf.Rad2Deg;
@@ -59,5 +59,5 @@ public class IceBeamSpell : Spell
         _secondsSinceLastCast = Time.time;
         _activeIceBeam.CleanUp();
         _activeIceBeam = null;
-    }
+    }    
 }

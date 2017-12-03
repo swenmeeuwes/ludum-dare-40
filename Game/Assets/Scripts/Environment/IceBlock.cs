@@ -5,11 +5,15 @@ using UnityEngine;
 
 // todo: refactor to work with the 'EffectedByTemperature' class
 [RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Collider2D))]
 public class IceBlock : MonoBehaviour
 {
+    public bool DestoryOnMelt = true;
+    [SerializeField] private bool _startFrozen = true;
+
     [SerializeField] private float _freezeThreshold;
     [SerializeField] private float _meltThreshold;
-    [SerializeField] private float _secondsTillStateChange;
+    [SerializeField] private float _secondsTillStateChange;    
 
     public GameObject Holding;
 
@@ -17,22 +21,38 @@ public class IceBlock : MonoBehaviour
     private float _startOpacity;
 
     private SpriteRenderer _spriteRenderer;
+    private Collider2D _collider;
 
     private void Awake()
     {
         _health = _secondsTillStateChange;        
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _startOpacity = _spriteRenderer.color.a;       
+        _collider = GetComponent<Collider2D>();
+
+        _startOpacity = _spriteRenderer.color.a;        
     }
 
     private void Start()
     {
         ReleaseHoldingObject(false);
+
+        if (!_startFrozen)
+            AddHealth(-float.MaxValue);
     }
 
     private void Update()
     {
+        if (_health <= 0)
+        {
+            ReleaseHoldingObject(true);
+
+            if (DestoryOnMelt)
+                Destroy(gameObject);
+            else
+                gameObject.SetActive(false);
+        }
+
         if (TemperatureManager.Instance != null)
         {
             if (TemperatureManager.Instance.Temperature < _freezeThreshold)
@@ -40,15 +60,9 @@ public class IceBlock : MonoBehaviour
             if (TemperatureManager.Instance.Temperature > _meltThreshold)
                 AddHealth(-Time.deltaTime);
         }
-
-        if (_health <= 0)
-        {
-            ReleaseHoldingObject(true);
-            Destroy(gameObject);
-        }
     }
 
-    private void AddHealth(float amount)
+    public void AddHealth(float amount)
     {
         _health = Mathf.Clamp(_health + amount, 0, _secondsTillStateChange);
 

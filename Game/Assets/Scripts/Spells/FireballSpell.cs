@@ -19,7 +19,7 @@ public class FireballSpell : Spell {
         var fireballPrefab = PrefabLocator.Instance.Locate(Prefab.Fireball);
         var fireballObject = MonoBehaviour.Instantiate(fireballPrefab, spellCaster.Transform.position + mouseWorldPosition.normalized, Quaternion.identity);
         if (spellCaster.Transform.tag == "Player")
-            fireballObject.layer = (int)Layers.PlayerSpells;
+            fireballObject.layer = (int)Layers.HotPlayerSpells;
 
         var direction = (mouseWorldPosition - spellCaster.Transform.position).normalized;
         direction.z = 0;

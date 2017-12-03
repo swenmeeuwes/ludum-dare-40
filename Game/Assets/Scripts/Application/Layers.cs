@@ -9,5 +9,8 @@ public enum Layers {
     Water = 4,
     Ui = 5,
     Player = 8,
-    PlayerSpells = 9
+    ColdPlayerSpells = 9,
+    HotPlayerSpells = 10,
+    Npc = 11,
+    Deactivated = 12
 }
