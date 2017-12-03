@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1139354064749022
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 61994060427392830}
   - component: {fileID: 95247059897893440}
   - component: {fileID: 114370863528633432}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Wizard_Old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
