@@ -8,6 +8,8 @@ public class TypeWriter : MonoEventDispatcher
 {
     public static readonly string Finished = "TypeWrited.Finished";
 
+    [SerializeField] private string _startText = "";
+
     public bool IsWriting { get; set; }
 
     private Text _textField;
@@ -19,6 +21,12 @@ public class TypeWriter : MonoEventDispatcher
 
         _textField = GetComponent<Text>();
         _textField.text = "";
+    }
+
+    private void Start()
+    {
+        if (_startText.Length > 0)
+            Type(_startText);
     }
 
     public void Type(string text)
