@@ -6,6 +6,7 @@ using UnityEngine;
 public class TemperatureManager : MonoSingleton<TemperatureManager>
 {
     [Tooltip("Scales from 0 to 1, where 0 is cold and 1 hot")][Range(0, 1)][SerializeField] private float _temperature;
+    [SerializeField] private bool _ignoreTemperatureInThisScene = false;
     
     public float Temperature {
         get { return _temperature; }
@@ -18,6 +19,12 @@ public class TemperatureManager : MonoSingleton<TemperatureManager>
 
     private void Update()
     {
+        if (_ignoreTemperatureInThisScene)
+        {
+            _temperature = 0.5f;
+            return;
+        }
+
         if (_temperature < 0.01f && GameManager.Instance.State == GameState.Playing)
             OnAbsoluteZero();
 
