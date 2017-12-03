@@ -51,8 +51,11 @@ public class Fireball : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         var iceBlock = other.GetComponent<IceBlock>();
+        var meltPower = 8f;
+        if (_rigidbody.velocity.magnitude > 2f)
+            meltPower = float.MaxValue;
         if (iceBlock != null)
-            iceBlock.AddHealth(-8f * Time.deltaTime);
+            iceBlock.AddHealth(-meltPower * Time.deltaTime);
     }
 
     public void SetVelocity(Vector2 velocity)
