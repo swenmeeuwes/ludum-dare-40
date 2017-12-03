@@ -26,6 +26,13 @@ public class Player : MonoBehaviour, ISpellCaster
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    private void Update()
+    {
+        // Safeguard for when falling out of the map somehow
+        if (transform.position.y < -100)
+            SceneLoader.Instance.ReloadCurrentSceneAsync();
+    }
+
     public void Hit()
     {
         _spriteRenderer.material = _hitMaterial;
