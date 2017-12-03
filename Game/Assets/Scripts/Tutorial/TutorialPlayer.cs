@@ -114,8 +114,7 @@ public class TutorialPlayer : MonoBehaviour
                 break;
 
             case TutorialItemActionType.SpawnFireball:
-                _fireballSpawner.Spawn();
-                _fireballSpawner.Invoke("Spawn", 0.3f);
+                _fireballSpawner.Spawn();                
                 _fireballSpawner.Invoke("Spawn", 0.6f);
                 break;
 
