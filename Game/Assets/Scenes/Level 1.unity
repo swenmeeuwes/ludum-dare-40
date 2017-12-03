@@ -1681,12 +1681,12 @@ Prefab:
     - target: {fileID: 224060327001063620, guid: 2f10e85904ae25b43bc2a444de2fd895,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 477
+      value: 562
       objectReference: {fileID: 0}
     - target: {fileID: 224060327001063620, guid: 2f10e85904ae25b43bc2a444de2fd895,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 268.5
+      value: 316
       objectReference: {fileID: 0}
     - target: {fileID: 224604292790714170, guid: 2f10e85904ae25b43bc2a444de2fd895,
         type: 2}
@@ -2893,6 +2893,48 @@ Transform:
   m_PrefabParentObject: {fileID: 4969828605010278, guid: 66e88a503b1aa664cb514b5812686ef2,
     type: 2}
   m_PrefabInternal: {fileID: 1448895467}
+--- !u!1 &1150455118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1150455119}
+  - component: {fileID: 1150455120}
+  m_Layer: 0
+  m_Name: FireballTrap (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1150455119
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1150455118}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 90, y: 4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1152764969}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1150455120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1150455118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f05bf58ced0990046af4b78a666b9086, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Distance: 17
+  _fireballVelocity: {x: -10, y: 0.5}
 --- !u!1 &1152764968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,6 +2961,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1624900979}
+  - {fileID: 1150455119}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4497,8 +4540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f05bf58ced0990046af4b78a666b9086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 30
-  _fireballVelocity: {x: -5, y: 0.35}
+  Distance: 17
+  _fireballVelocity: {x: -10, y: 0.5}
 --- !u!1 &1635364326
 GameObject:
   m_ObjectHideFlags: 0
