@@ -46,7 +46,7 @@ public class IceBeamSpell : Spell
             iceBeamObject.transform.position = spellCaster.Transform.position;
         }
 
-        TemperatureManager.Instance.AddTemperature(HeatEffect * Time.deltaTime);
+        TemperatureManager.Instance.AddTemperature(HeatEffect * Time.deltaTime, true);
 
         return true;
     }

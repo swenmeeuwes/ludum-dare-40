@@ -15,8 +15,30 @@ public class TemperatureManager : MonoSingleton<TemperatureManager>
         DefineSingleton(this);
     }
 
-    public void AddTemperature(float addition)
+    public void AddTemperature(float addition, bool instant = false)
     {
-        _temperature = Mathf.Clamp01(_temperature + addition);
+        var targetTemperature = Mathf.Clamp01(_temperature + addition);
+
+        if (instant)
+        {
+            _temperature = targetTemperature;
+            return;
+        }
+
+        // todo: replace by coroutine?
+        iTween.ValueTo(gameObject, iTween.Hash(
+                "from", _temperature,
+                "to", targetTemperature,
+                "time", 0.6f,
+                "onupdatetarget", gameObject,
+                "onupdate", "TemperatureTweenOnUpdateCallBack",
+                "easetype", iTween.EaseType.easeInOutCirc
+            )
+        );
+    }
+
+    private void TemperatureTweenOnUpdateCallBack(float newValue)
+    {
+        _temperature = newValue;
     }
 }
