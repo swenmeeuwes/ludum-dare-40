@@ -17,6 +17,9 @@ public class IceBlock : MonoBehaviour
 
     public GameObject Holding;
 
+    public float FreezeThreshold { get { return _freezeThreshold; } }
+    public float MeltThreshold { get { return _meltThreshold; } }
+
     private float _health;
     private float _startOpacity;
 

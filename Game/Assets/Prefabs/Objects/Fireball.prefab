@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509198a8f8680cb4bbaaec7b874ead73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Lifetime: 30
 --- !u!198 &198071576050633896
 ParticleSystem:
   m_ObjectHideFlags: 1
