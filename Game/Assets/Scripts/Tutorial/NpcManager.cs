@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NpcManager : MonoSingleton<NpcManager>
 {
+    // todo: Refactor to abstract
+    [SerializeField] private NpcOldWizard _npcOldWizard;
     private readonly List<StressingNpc> _npcs = new List<StressingNpc>();
 
     private Player _player;
@@ -26,6 +28,8 @@ public class NpcManager : MonoSingleton<NpcManager>
 
     public void UnleashTheChaos()
     {
+        _npcOldWizard.Duck();
+
         foreach (var stressingNpc in _npcs)
         {
             stressingNpc.IsStressing = true;
@@ -34,6 +38,8 @@ public class NpcManager : MonoSingleton<NpcManager>
 
     public void CalmDownThePlebs()
     {
+        _npcOldWizard.Calm();
+
         foreach (var stressingNpc in _npcs)
         {
             stressingNpc.IsStressing = false;
