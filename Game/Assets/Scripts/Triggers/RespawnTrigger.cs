@@ -19,6 +19,13 @@ public class RespawnTrigger : TagTrigger
 
     private void OnDrawGizmos()
     {
+        var triggerCollider = GetComponent<Collider2D>();
+        if (triggerCollider != null)
+        {
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireCube(triggerCollider.bounds.center, triggerCollider.bounds.size);            
+        }
+
         Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(_respawnPoint, 0.5f);
     }
