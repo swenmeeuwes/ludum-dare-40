@@ -50,7 +50,10 @@ public class TutorialPlayer : MonoEventDispatcher
         _player = FindObjectOfType<Player>();
         _player.Movement.enabled = false;
         _player.Wand.enabled = false;
-        Camera.main.GetComponent<FollowingCamera>().enabled = false;
+
+        var followingCamera = Camera.main.GetComponent<FollowingCamera>();
+        if (followingCamera != null)
+            followingCamera.enabled = false;
 
         _temperatureUiController.Hide(true);
 
@@ -103,7 +106,9 @@ public class TutorialPlayer : MonoEventDispatcher
 
         yield return new WaitForSeconds(0.5f);
 
-        Camera.main.GetComponent<FollowingCamera>().enabled = true;
+        var followingCamera = Camera.main.GetComponent<FollowingCamera>();
+        if (followingCamera != null)
+            followingCamera.enabled = true;
         _player.Movement.enabled = true;
         _player.Wand.enabled = true;
 

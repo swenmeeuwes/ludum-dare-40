@@ -29,7 +29,7 @@ public class BossSequence : MonoBehaviour
         StopCoroutine("HandleSequence");
         Time.timeScale = 0.1f;
 
-        Invoke("NextLevel", 0.1f); // 0.1 / 0.1 (timeScale) = 1
+        Invoke("NextLevel", 0.5f); // 0.1 / 0.1 (timeScale) = 1 ???
     }
 
     private void StartSequence()
