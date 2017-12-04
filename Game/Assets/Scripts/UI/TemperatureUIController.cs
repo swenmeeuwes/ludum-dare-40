@@ -34,7 +34,8 @@ public class TemperatureUIController : MonoBehaviour
 
     public void Hide(bool hide)
     {
-        _animator.SetBool("Hidden", hide);
+        if (_animator != null)
+            _animator.SetBool("Hidden", hide);
     }
 
     private void OnTemperatureSliderValueChanged(float newValue)

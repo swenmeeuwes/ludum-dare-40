@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1533074973429214}
+  m_IsPrefabParent: 1
+--- !u!1 &1533074973429214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4748327171366140}
+  - component: {fileID: 114245671142454100}
+  m_Layer: 0
+  m_Name: TutorialPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4748327171366140
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533074973429214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114245671142454100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533074973429214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebda33fb3af2864cb8cb64ea641c5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tutorialTextField: {fileID: 0}
+  _continueTextField: {fileID: 0}
+  _tutorialDelay: 0.5
+  _temperatureUiController: {fileID: 0}
+  _exitArrow: {fileID: 0}
+  _fireballSpawner: {fileID: 0}
+  Sequence:
+  - Text: Hmm, the more you age, the worse it gets.
+    Action: 0
+  - Text: OH, *AHEM*.
+    Action: 0
+  - Text: Hello class!
+    Action: 0
+  - Text: Welcome to today's class about temperature and spells!
+    Action: 0
+  - Text: The first important concept that should be known is temperature.
+    Action: 0
+  - Text: Warm and cold cancel eachother out, thus reaching equilibrium.
+    Action: 0
+  - Text: When this equilibrium is disturbed bad things will happen.
+    Action: 0
+  - Text: The more warmth or cold there is, the worse it gets.
+    Action: 0
+  - Text: Temperature can be checked at the bottom right of the screen.
+    Action: 1
+  - Text: You mustn't disturb the balance!
+    Action: 0
+  - Text: 'Okay, let''s move on to the next subject: "Spells".'
+    Action: 0
+  - Text: In last class you've all learned how to cast spells.
+    Action: 0
+  - Text: You can use your left hand to cast spells which will give off heat.
+    Action: 0
+  - Text: Furthermore, you can use your right hand to cast cold spells.
+    Action: 0
+  - Text: Remember that these spells will have effect on the temperature of the environment!
+    Action: 0
+  - Text: Okay, now try to-
+    Action: 0
+  - Text: '*rumble*'
+    Action: 2
+  - Text: '...'
+    Action: 2
+  - Text: '*rumble*'
+    Action: 3
+  - Text: H-He is here!
+    Action: 4
+  - Text: ${VillainName} has awoken!
+    Action: 0
+  - Text: You've got to do something ${PlayerName}!
+    Action: 0

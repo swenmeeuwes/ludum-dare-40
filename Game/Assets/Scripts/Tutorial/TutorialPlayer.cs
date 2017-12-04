@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialPlayer : MonoBehaviour
+public class TutorialPlayer : MonoEventDispatcher
 {
+    public static readonly string Finished = "TutorialPlayer.Finished";
+
     [SerializeField] private TypeWriter _tutorialTextField;
     [SerializeField] private Text _continueTextField;
     [SerializeField] private float _tutorialDelay;
@@ -14,6 +16,7 @@ public class TutorialPlayer : MonoBehaviour
 
     [Tooltip("Time in seconds before the tutorial starts")] public TutorialItem[] Sequence;
 
+    public bool HasStarted { get; private set; }
     public bool IsFinished { get; set; }
 
     public TutorialItem CurrentSequenceItem
@@ -33,8 +36,10 @@ public class TutorialPlayer : MonoBehaviour
     private Player _player;
     private int _sequenceIndex;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         _sequenceIndex = -1;
         _continueTextField.enabled = false;
         _exitArrow.enabled = false;
@@ -45,6 +50,7 @@ public class TutorialPlayer : MonoBehaviour
         _player = FindObjectOfType<Player>();
         _player.Movement.enabled = false;
         _player.Wand.enabled = false;
+        Camera.main.GetComponent<FollowingCamera>().enabled = false;
 
         _temperatureUiController.Hide(true);
 
@@ -60,7 +66,7 @@ public class TutorialPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (IsFinished)
+        if (!HasStarted || IsFinished)
             return;
 
         if (Input.anyKeyDown)
@@ -73,7 +79,9 @@ public class TutorialPlayer : MonoBehaviour
     }
 
     private void Next()
-    {        
+    {
+        HasStarted = true;
+
         if (_sequenceIndex + 1 > Sequence.Length - 1 && !IsFinished)
         {
             StartCoroutine(Finish());
@@ -95,8 +103,16 @@ public class TutorialPlayer : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        Camera.main.GetComponent<FollowingCamera>().enabled = true;
         _player.Movement.enabled = true;
         _player.Wand.enabled = true;
+
+        Dispatch(new EventObject
+        {
+            Sender = this,
+            Type = Finished,
+            Data = null
+        });
     }
 
     private void HandleTutorialItem(TutorialItem tutorialItem)

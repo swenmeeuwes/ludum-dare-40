@@ -8,6 +8,9 @@ public class Fireball : MonoBehaviour
 {
     [Tooltip("Time in seconds before the object despawns, put to -1 for never.")] public float Lifetime = 30f;
 
+    [Tooltip("If true the fireball will fall through the ground once it hit something.")]
+    public bool FallOffWorldOnceHit = false;
+
     private ParticleSystem _particleSystem;
     private Rigidbody2D _rigidbody;
 
@@ -46,6 +49,9 @@ public class Fireball : MonoBehaviour
             player.Hit();
             gameObject.layer = (int) Layers.Deactivated;
         }
+
+        if (FallOffWorldOnceHit)
+            Invoke("MoveToDeactivedLayer", 0.1f);
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -58,6 +64,11 @@ public class Fireball : MonoBehaviour
             iceBlock.AddHealth(-meltPower * Time.deltaTime);
     }
 
+    private void MoveToDeactivedLayer()
+    {
+        gameObject.layer = (int)Layers.Deactivated;
+    }
+
     public void SetVelocity(Vector2 velocity)
     {
         _rigidbody.velocity = velocity;
@@ -66,29 +77,5 @@ public class Fireball : MonoBehaviour
     public void SetAngularDrag(float angularDrag)
     {
         _rigidbody.angularDrag = angularDrag;
-    }
-
-    // Quick hack to prevent particles from spawning at Vector3.zero in world pos on first tick
-    [Obsolete]
-    private IEnumerator PlayParticleSystemDelayed()
-    {
-        yield return null;
-
-        _particleSystem.Play();
-    }
-
-    [Obsolete]
-    public void Sleep()
-    {
-        StopAllCoroutines();
-        _rigidbody.Sleep();
-        _particleSystem.Stop();
-    }
-
-    [Obsolete]
-    public void WakeUp()
-    {
-        _rigidbody.WakeUp();
-        StartCoroutine(PlayParticleSystemDelayed());
-    }
+    }    
 }
