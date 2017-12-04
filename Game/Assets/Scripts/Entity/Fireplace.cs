@@ -20,12 +20,13 @@ public class Fireplace : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         var player = other.GetComponent<Player>();
-        if (player != null && TemperatureManager.Instance != null &&
-            TemperatureManager.Instance.Temperature < _warmTill)
+        if (player != null && TemperatureManager.Instance != null)
         {
-            TemperatureManager.Instance.SetTemperature(_warmTill);
             if (_particleSystem != null)
                 _particleSystem.Play();
+
+            if (TemperatureManager.Instance.Temperature < _warmTill)
+                TemperatureManager.Instance.SetTemperature(_warmTill);            
         }
     }
 }
