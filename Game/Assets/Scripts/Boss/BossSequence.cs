@@ -15,12 +15,21 @@ public class BossSequence : MonoBehaviour
     private void Start()
     {
         _tutorialPlayer.AddEventListener(TutorialPlayer.Finished, OnTutorialFinished, true);
+        _boss.AddEventListener(Boss.Died, OnBossDied, true);
     }
 
     private void OnTutorialFinished(EventObject eventObject)
     {
         Active = true;
         StartSequence();
+    }
+
+    private void OnBossDied(EventObject eventObject)
+    {
+        StopCoroutine("HandleSequence");
+        Time.timeScale = 0.1f;
+
+        Invoke("NextLevel", 0.1f); // 0.1 / 0.1 (timeScale) = 1
     }
 
     private void StartSequence()
@@ -39,5 +48,13 @@ public class BossSequence : MonoBehaviour
 
             _boss.BeginCasting();
         }
+    }
+
+    private void NextLevel()
+    {
+        Time.timeScale = 1f;
+
+        if (SceneLoader.Instance != null)
+            SceneLoader.Instance.LoadNextAsync();
     }
 }
