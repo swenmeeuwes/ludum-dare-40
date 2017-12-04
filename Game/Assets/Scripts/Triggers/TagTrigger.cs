@@ -14,6 +14,7 @@ public class TagTrigger : MonoBehaviour
     protected virtual void Start()
     {
         _collider = GetComponent<Collider2D>();
+        _collider.isTrigger = true;
     }
 
     protected void OnTriggerEnter2D(Collider2D other)
